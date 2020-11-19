@@ -1,14 +1,19 @@
 import { useState } from "react";
+import classNames from "classnames";
 
-const PizzaBlock = ({ name, imageUrl, price }) => {
-  const types = ['тонкое', 'традиционное'];
-  const [activeType, setActiveType] = useState(0)
+const PizzaBlock = ({ name, imageUrl, price, types, sizes }) => {
+  const availableTypes = ['тонкое', 'традиционное'];
+  const availableSizes = [26, 30, 40];
+  const [activeType, setActiveType] = useState(types[0])
+  const [activeSize, setActiveSize] = useState(sizes[0])
 
   const typeOnclickHandler = (index) => {
-    console.log(index);
     setActiveType(index);
   }
 
+  const sizesOnclickHandler = (index) => {
+    setActiveSize(index)
+  }
   return (
     <div className="pizza-block">
       <img
@@ -19,14 +24,30 @@ const PizzaBlock = ({ name, imageUrl, price }) => {
       <h4 className="pizza-block__title">{name}</h4>
       <div className="pizza-block__selector">
         <ul>
-          {types.map((item, index) => (
-            <li onClick={() => typeOnclickHandler(index)} className={activeType === index && 'active'} key={item}>{item}</li>
+          {availableTypes.map((item, index) => (
+            <li
+              onClick={() => typeOnclickHandler(index)}
+              className={classNames({
+                active: activeType === index,
+                disabled: !types.includes(index)
+
+              })}
+              key={item}>{item}
+            </li>
           ))}
         </ul>
         <ul>
-          <li className="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          {availableSizes.map((item, index) => (
+            <li
+              onClick={() => sizesOnclickHandler(index)}
+              className={classNames({
+                active: activeSize === item,
+                disabled: !sizes.includes(item)
+              })}
+              key={item}>
+              {item} см.
+            </li>
+          ))}
         </ul>
       </div>
       <div className="pizza-block__bottom">
