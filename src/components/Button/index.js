@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 const Button = ({ onClick, className, outline, children }) => {
   return (
@@ -8,6 +9,14 @@ const Button = ({ onClick, className, outline, children }) => {
         'button--outline': outline,
       })}> {children} </button>
   )
+}
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
+}
+
+Button.defaultProps = {
+  onClick: () => alert('Возникла ошибка, попробуйте позже')
 }
 
 export default Button;

@@ -1,6 +1,16 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Categories, PizzaBlock, SortPopup } from '../../components';
+import axios from 'axios';
+import setPizzas from '../../redux/actions/pizzas'
 
-const Home = ({ items }) => {
+const Home = () => {
+
+  const { items } = useSelector(({ pizzas }) => {
+    return {
+      items: pizzas.items,
+    }
+  })
 
   return (
     <div className="container">

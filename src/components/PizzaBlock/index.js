@@ -1,5 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
+import PropTypes from "prop-types";
 
 const PizzaBlock = ({ name, imageUrl, price, types, sizes }) => {
   const availableTypes = ['тонкое', 'традиционное'];
@@ -39,7 +40,7 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes }) => {
         <ul>
           {availableSizes.map((item, index) => (
             <li
-              onClick={() => sizesOnclickHandler(index)}
+              onClick={() => sizesOnclickHandler(item)}
               className={classNames({
                 active: activeSize === item,
                 disabled: !sizes.includes(item)
@@ -71,6 +72,22 @@ const PizzaBlock = ({ name, imageUrl, price, types, sizes }) => {
       </div>
     </div>
   )
+}
+
+PizzaBlock.propTypes = {
+  name: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  price: PropTypes.number,
+  types: PropTypes.arrayOf(PropTypes.number).isRequired,
+  sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+}
+
+PizzaBlock.defaultProps = {
+  name: 'Пицца',
+  imageUrl: '',
+  price: 0,
+  types: [],
+  sizes: [],
 }
 
 export default PizzaBlock;
