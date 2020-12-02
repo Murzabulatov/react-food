@@ -5,7 +5,6 @@ const SortPopup = React.memo(({ activeSortType, items, onClickSortType }) => {
 
   const [visiblePopup, setVisiblePopup] = useState(false);
   const sortRef = useRef();
-  console.log(items, activeSortType);
   const activeLabel = items.find(obj => obj.type === activeSortType).name;
 
   const toggleVisiblePopup = () => {
@@ -13,7 +12,8 @@ const SortPopup = React.memo(({ activeSortType, items, onClickSortType }) => {
   }
 
   const handleOutsideClick = (event) => {
-    if (!event.path.includes(sortRef.current)) {
+    const path = event.path || (event.composedPath && event.composedPath());
+    if (!path.includes(sortRef.current)) {
       setVisiblePopup(false)
     }
   }
