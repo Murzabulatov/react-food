@@ -4,6 +4,7 @@ import Categories from './Categories';
 import SortPopup from './SortPopup';
 import PizzaBlock from './PizzaBlock';
 import PizzaLoader from './PizzaLoader';
+import CartItem from './CartItem';
 
 export {
   Button,
@@ -11,5 +12,6 @@ export {
   Categories,
   SortPopup,
   PizzaBlock,
-  PizzaLoader
+  PizzaLoader,
+  CartItem,
 }
