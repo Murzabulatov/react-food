@@ -1,6 +1,7 @@
-# Getting Started with Create React App
+# React-Food - интернет магазин пиццы
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Главная страница
+
 
 ## Available Scripts
 
